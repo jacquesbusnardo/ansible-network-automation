@@ -1,0 +1,5 @@
+---
+snmp_community: mycomm
+snmp_contact: NOC <noc@example.net>
+snmp_addresses_list:
+  - 172.25.0.0/24

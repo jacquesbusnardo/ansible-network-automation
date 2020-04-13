@@ -1,0 +1,10 @@
+---
+
+# RouterOS Platform
+# https://docs.ansible.com/ansible/latest/network/user_guide/platform_routeros.html
+# https://mikrotik.com/software
+
+ansible_connection: network_cli
+ansible_network_os: routeros
+ansible_user: ansible
+ansible_password: ansible123

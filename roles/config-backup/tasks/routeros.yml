@@ -1,0 +1,12 @@
+---
+- name: Config SNMP (MikroTik RouterOS)
+  routeros_command:
+    commands:
+      - /export compact
+  register: result
+
+- copy:
+    content: "{{ result.stdout_lines.0[5:] | join('\n')}}"
+    dest: "config-backup/routeros/{{ inventory_hostname }}.txt"
+- debug:
+    var: result.stdout_lines.0[5:]
