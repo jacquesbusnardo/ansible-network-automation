@@ -1,10 +1,10 @@
 /interface wireless security-profiles
 set [ find default=yes ] supplicant-identity=MikroTik
 /snmp community
-set [ find default=yes ] addresses=172.25.0.0/24 name=mycomm write-access=yes
+set [ find default=yes ] addresses=172.25.0.0/24 write-access=yes
 /ip address
 add address=172.25.0.1/24 interface=ether1 network=172.25.0.0
 /ip dhcp-client
-add dhcp-options=hostname,clientid disabled=no interface=ether1
+add disabled=no interface=ether1
 /snmp
-set enabled=yes
+set contact="Noc <noc@example.net>" enabled=yes location="Home vLab 01"

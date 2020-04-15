@@ -1,3 +1,6 @@
 [routeros]
 chr01-lab01
 chr02-lab01
+
+[standard]
+chr01-lab01

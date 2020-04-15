@@ -1,0 +1,6 @@
+---
+snmp_community: public
+snmp_addresses_list:
+  - 172.25.0.0/24
+snmp_contact: Noc <noc@example.net>
+snmp_location: N/A
