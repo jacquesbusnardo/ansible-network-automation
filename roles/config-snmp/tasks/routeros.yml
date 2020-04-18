@@ -1,11 +1,18 @@
 ---
+- set_fact:
+    config: |
+      /snmp community set 0 name={{ snmp_community }}
+      /snmp community set 0 addresses={{ snmp_addresses_list | join(',') }}
+      /snmp community set 0 read-access=yes
+      /snmp community set 0 write-access=yes
+      /snmp set contact= "{{ snmp_contact }}"
+      /snmp set location= "{{ snmp_location }}"
+      /snmp set enabled=yes
+
 - name: Config SNMP (MikroTik RouterOS)
-  routeros_command:
-    commands:
-      - /snmp community set 0 name={{ snmp_community }}
-      - /snmp community set 0 addresses={{ snmp_addresses_list | join(',') }}
-      - /snmp community set 0 read-access=yes
-      - /snmp community set 0 write-access=yes
-      - /snmp set contact="{{ snmp_contact }}"
-      - /snmp set location="{{ snmp_location }}"
-      - /snmp set enabled=yes
+  cli_config:
+    config: "{{ config }}"
+  register: result
+
+- debug:
+    var: group_names 

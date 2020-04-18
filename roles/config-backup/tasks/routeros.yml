@@ -1,12 +1,15 @@
 ---
-- name: Config SNMP (MikroTik RouterOS)
+- name: Config Backup (MikroTik RouterOS)
   routeros_command:
-    commands:
-      - /export compact
+    commands: /export compact
   register: result
 
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ role_name }}/{{ group_names }}"
+    state: directory
+
 - copy:
-    content: "{{ result.stdout_lines.0[5:] | join('\n')}}"
-    dest: "config-backup/routeros/{{ inventory_hostname }}.txt"
-- debug:
-    var: result.stdout_lines.0[5:]
+    content: "{{ result.stdout.0[26:] }}"
+    dest: "{{ role_name  }}/{{ group_names }}/{{ inventory_hostname }}.txt"
+  with_items: "{{ group_names }}"
