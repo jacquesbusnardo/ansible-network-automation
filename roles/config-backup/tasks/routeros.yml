@@ -6,10 +6,11 @@
 
 - name: Create a directory if it does not exist
   file:
-    path: "{{ role_name }}/{{ group_names }}"
+    path: "{{ role_name }}/{{ item }}"
     state: directory
+  with_items: "{{ group_names }}"
 
 - copy:
     content: "{{ result.stdout.0[26:] }}"
-    dest: "{{ role_name  }}/{{ group_names }}/{{ inventory_hostname }}.txt"
+    dest: "{{ role_name  }}/{{ item }}/{{ inventory_hostname }}.txt"
   with_items: "{{ group_names }}"
