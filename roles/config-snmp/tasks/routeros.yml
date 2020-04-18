@@ -13,6 +13,3 @@
   cli_config:
     config: "{{ config }}"
   register: result
-
-- debug:
-    var: group_names 
