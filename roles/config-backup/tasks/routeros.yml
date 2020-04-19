@@ -1,6 +1,5 @@
 ---
-- name: Config Backup (MikroTik RouterOS)
-  routeros_command:
+- routeros_command:
     commands: /export compact
   register: result
 
@@ -12,5 +11,5 @@
 
 - copy:
     content: "{{ result.stdout.0[26:] }}"
-    dest: "{{ role_name  }}/{{ item }}/{{ inventory_hostname }}.txt"
+    dest: "{{ role_name }}/{{ item }}/{{ inventory_hostname }}.txt"
   with_items: "{{ group_names }}"

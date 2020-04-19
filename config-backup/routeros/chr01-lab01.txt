@@ -6,7 +6,7 @@ RouterOS 6.45.8
 /interface wireless security-profiles
 set [ find default=yes ] supplicant-identity=MikroTik
 /snmp community
-set [ find default=yes ] addresses=172.25.0.0/24 write-access=yes
+set [ find default=yes ] addresses=172.25.0.0/24,10.0.0.0/24 write-access=yes
 /ip address
 add address=172.25.0.1/24 interface=ether1 network=172.25.0.0
 /ip dhcp-client
